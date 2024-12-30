@@ -1,0 +1,18 @@
+version: 3
+
+env:
+    INPUT_SYSTEMPROMPTOVERRIDE: ""
+    INPUT_PROJECTSPECIFICCONTEXT: |
+        This is an Azure DevOps Extension that re-writes commit messages using AI.
+        It is written primarily in TypeScript and supports multiple AI APIs.
+
+tasks:
+    default:
+        - cmd: tsc
+          silent: true
+        - cmd: node index.js
+
+    test:
+        - cmd: tsc
+          silent: true
+        - cmd: mocha tests/_suite.js
