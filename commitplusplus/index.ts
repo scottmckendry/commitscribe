@@ -20,6 +20,72 @@ function getTaskInputs(): TaskInputs {
     };
 }
 
+/** Check if a tool is installed and return the path to it
+ * @param toolName The name of the tool to check
+ * @returns The path to the tool
+ */
+function checkTool(toolName: string): string {
+    const toolPath = tl.which(toolName, true);
+    if (!toolPath) {
+        const error = `${toolName} is not installed or not found in PATH`;
+        tl.setResult(tl.TaskResult.Failed, error);
+        throw new Error(error);
+    }
+    return toolPath;
+}
+
+/** Get the commit message & diff from a given offset from HEAD
+ * @param offset The number of commits to go back from HEAD
+ * @returns The commit message & diff as a string
+ */
+function getCommitMessage(offset = 0): string {
+    const gitPath = checkTool("git");
+    var g = tl.tool(gitPath);
+    var output: string;
+
+    // Check if the commit message is empty or contains an error or if the signoff is already present
+    g.arg(["log", "-1", "--pretty=format:%B", `HEAD~${offset}`]);
+    try {
+        output = g.execSync().stdout || "";
+        if (
+            output === "" ||
+            output.includes("fatal:") ||
+            output.includes("error:")
+        ) {
+            tl.warning("No commit message found for HEAD~" + offset);
+            return "";
+        }
+
+        if (output.includes("[commit++_signoff]")) {
+            return "";
+        }
+    } catch (err: any) {
+        tl.setResult(tl.TaskResult.Failed, err.message);
+        throw err;
+    }
+
+    g = tl.tool(gitPath);
+    g.arg(["show", `HEAD~${offset}`]);
+    try {
+        const output = g.execSync();
+        return output.stdout || "";
+    } catch (err: any) {
+        tl.setResult(tl.TaskResult.Failed, err.message);
+        throw err;
+    }
+}
+
+/** Truncate the prompt to a maximum number of tokens.
+ * A token is defined as 4 characters (including spaces).
+ * This isn't a perfect calulation, but it's good enough for this task.
+ */
+function truncatePrompt(prompt: string, maxTokens: number): string {
+    if (prompt.length <= maxTokens * 4) {
+        return prompt;
+    }
+    return prompt.substring(0, maxTokens * 4) + "...";
+}
+
 async function run() {
     try {
         const inputs = getTaskInputs();
@@ -32,9 +98,28 @@ async function run() {
             systemPrompt += `\nAdditional context about this project:\n\n${inputs.projectSpecificContext}`;
         }
 
-        console.log(systemPrompt);
-        console.log(`Max tokens: ${inputs.maxTokens}`);
-        console.log(`Recurse: ${inputs.recurse}`);
+        var userPrompt = getCommitMessage();
+        if (userPrompt === "") {
+            tl.setResult(tl.TaskResult.Succeeded, "No commit to process");
+            return;
+        }
+
+        userPrompt = truncatePrompt(userPrompt, inputs.maxTokens);
+
+        // TODO: call the API to generate the updated commit message
+
+        if (inputs.recurse) {
+            // Recurse back through the commit history until we find a commit without a signoff
+            var offset = 1;
+            while (true) {
+                var commitMessage = getCommitMessage(offset);
+                if (commitMessage === "") {
+                    break;
+                }
+                // TODO: call the API to generate the updated commit message
+                offset++;
+            }
+        }
     } catch (err: any) {
         tl.setResult(tl.TaskResult.Failed, err.message);
     }
