@@ -11,7 +11,9 @@
     "description": "",
     "dependencies": {
         "@anthropic-ai/sdk": "^0.33.1",
-        "azure-pipelines-task-lib": "^4.17.3"
+        "azure-pipelines-task-lib": "^4.17.3",
+        "@azure/openai": "^2.0.0",
+        "openai": "^4.77.0"
     },
     "devDependencies": {
         "@types/node": "^22.10.2",
