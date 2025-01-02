@@ -1,3 +1,4 @@
 commitplusplus/node_modules
 **/**.js
 commitplusplus/.taskkey
+commitplusplus/.env

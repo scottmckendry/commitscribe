@@ -14,8 +14,3 @@ tasks:
         - cmd: tsc
           silent: true
         - cmd: node index.js
-
-    test:
-        - cmd: tsc
-          silent: true
-        - cmd: mocha tests/_suite.js
