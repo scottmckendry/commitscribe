@@ -1,10 +1,13 @@
 import tl = require("azure-pipelines-task-lib/task");
+import { AIProviderFactory as ai } from "./ai";
 
 var systemPrompt = `The user input is a commit message and diff (output of git show <SHA>). Generate an updated commit message following the conventional commits specification. Ensure the title is maximum 50 characters and the message body is wrapped at 72 characters. Return ONLY the updated commit message - no other text. The diff may be truncated, keep this in mind.
 IMPORTANT: the last line of the description should always be the following:
 [commit++_signoff]`;
 
 interface TaskInputs {
+    aiProvider?: "anthropic" | "openai";
+    aiProviderKey?: string;
     systemPromptOverride?: string;
     projectSpecificContext?: string;
     maxTokens: number;
@@ -13,6 +16,8 @@ interface TaskInputs {
 
 function getTaskInputs(): TaskInputs {
     return {
+        aiProvider: tl.getInput("aiprovider", true) as "anthropic" | "openai",
+        aiProviderKey: tl.getInput("aiproviderkey", true),
         systemPromptOverride: tl.getInput("systempromptoverride", false),
         projectSpecificContext: tl.getInput("projectspecificcontext", false),
         maxTokens: parseInt(tl.getInput("maxtokens", false) || "2000"),
@@ -46,7 +51,7 @@ function getCommitMessage(offset = 0): string {
     // Check if the commit message is empty or contains an error or if the signoff is already present
     g.arg(["log", "-1", "--pretty=format:%B", `HEAD~${offset}`]);
     try {
-        output = g.execSync().stdout || "";
+        output = g.execSync({ silent: true }).stdout || "";
         if (
             output === "" ||
             output.includes("fatal:") ||
@@ -67,7 +72,7 @@ function getCommitMessage(offset = 0): string {
     g = tl.tool(gitPath);
     g.arg(["show", `HEAD~${offset}`]);
     try {
-        const output = g.execSync();
+        const output = g.execSync({ silent: true });
         return output.stdout || "";
     } catch (err: any) {
         tl.setResult(tl.TaskResult.Failed, err.message);
@@ -106,7 +111,16 @@ async function run() {
 
         userPrompt = truncatePrompt(userPrompt, inputs.maxTokens);
 
-        // TODO: call the API to generate the updated commit message
+        if (!inputs.aiProvider) {
+            throw new Error("AI provider not specified");
+        }
+
+        const aiProvider = ai.createProvider(inputs.aiProvider);
+        console.log(
+            await aiProvider.generateCommitMessage(systemPrompt, userPrompt),
+        );
+
+        // TODO: apply reworded commit message to the commit & push it
 
         if (inputs.recurse) {
             // Recurse back through the commit history until we find a commit without a signoff

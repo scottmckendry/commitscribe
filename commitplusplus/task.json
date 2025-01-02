@@ -15,6 +15,25 @@
     "instanceNameFormat": "Commit++ - Rewrite commit messages",
     "inputs": [
         {
+            "name": "aiprovider",
+            "type": "pickList",
+            "label": "AI Provider",
+            "defaultValue": "openai",
+            "required": true,
+            "options": {
+                "openai": "OpenAI",
+                "anthropic": "Anthropic"
+            },
+            "helpMarkDown": "Select the AI provider to use for generating commit messages"
+        },
+        {
+            "name": "aiproviderkey",
+            "type": "string",
+            "label": "AI Provider API Key",
+            "required": true,
+            "helpMarkDown": "API key for the selected AI provider"
+        },
+        {
             "name": "systempromptoverride",
             "type": "multiLine",
             "label": "System Prompt Override",

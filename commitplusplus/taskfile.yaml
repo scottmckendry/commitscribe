@@ -5,6 +5,9 @@ env:
     INPUT_PROJECTSPECIFICCONTEXT: |
         This is an Azure DevOps Extension that re-writes commit messages using AI.
         It is written primarily in TypeScript and supports multiple AI APIs.
+    INPUT_AIPROVIDER: "anthropic"
+
+dotenv: [".env"]
 
 tasks:
     default:

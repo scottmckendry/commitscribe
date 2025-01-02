@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.33.1",
     "azure-pipelines-task-lib": "^4.17.3"
   },
   "devDependencies": {
