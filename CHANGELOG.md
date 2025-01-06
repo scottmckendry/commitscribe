@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/scottmckendry/commitscribe/compare/v0.2.0...v0.2.1) (2025-01-06)
+
+
+### Bug Fixes
+
+* **icon:** resize extension icon for compliance ([c7db99f](https://github.com/scottmckendry/commitscribe/commit/c7db99f92061d0d0a3cf9af2f870882a192bb10b))
+
 ## [0.2.0](https://github.com/scottmckendry/commitscribe/compare/v0.1.0...v0.2.0) (2025-01-06)
 
 

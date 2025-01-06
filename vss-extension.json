@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "commitscribe",
     "name": "CommitScribe",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "publisher": "ScottMcKendry",
     "description": "AI powered commit message rewriting",
     "galleryFlags": [
