@@ -33,9 +33,7 @@ jobs:
               run: npm run build
             - name: Install tfx-cli
               run: npm install -g tfx-cli
-            - name: Package Extension
-              run: tfx extension create --manifest-globs vss-extension.json
             - name: Publish to Marketplace
-              run: tfx extension publish --vsix *.vsix --publisher ScottMcKendry --token ${{ secrets.MARKETPLACE_TOKEN }}
+              run: tfx extension publish --manifest-globs vss-extension.json --publisher ScottMcKendry --token ${{ secrets.MARKETPLACE_TOKEN }}
               env:
                   MARKETPLACE_TOKEN: ${{ secrets.MARKETPLACE_TOKEN }}
