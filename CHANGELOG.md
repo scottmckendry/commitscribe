@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.3](https://github.com/scottmckendry/commitscribe/compare/v0.2.2...v0.2.3) (2025-01-06)
+
+
+### Bug Fixes
+
+* **git:** determine current branch for push command ([7707b81](https://github.com/scottmckendry/commitscribe/commit/7707b81959c23ae41a5173d0952327242b8acce0))
+* **release:** include task.json in release please updater ([9fbc984](https://github.com/scottmckendry/commitscribe/commit/9fbc984011ce37f2d2b491c2677548b8051c29d9))
+
 ## [0.2.2](https://github.com/scottmckendry/commitscribe/compare/v0.2.1...v0.2.2) (2025-01-06)
 
 

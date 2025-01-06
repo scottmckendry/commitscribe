@@ -9,8 +9,8 @@
     "author": "Scott McKendry",
     "version": {
         "Major": 0, // x-release-please-major
-        "Minor": 1, // x-release-please-minor
-        "Patch": 0 // x-release-please-patch
+        "Minor": 2, // x-release-please-minor
+        "Patch": 3 // x-release-please-patch
     },
     "instanceNameFormat": "CommitScribe - Rewrite commit messages",
     "inputs": [
