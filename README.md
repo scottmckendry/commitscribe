@@ -1,3 +1,3 @@
-# Commit++ for Azure DevOps
+# CommitScribe for Azure DevOps
 
 AI Commit Message Rewriting for Azure DevOps

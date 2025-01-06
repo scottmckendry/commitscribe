@@ -28,7 +28,7 @@ jobs:
             - name: Install dependencies
               working-directory: ./commitplusplus
               run: npm ci
-            - name: Build TypeScript (nested)
+            - name: Build TypeScript
               working-directory: ./commitplusplus
               run: npm run build
             - name: Install tfx-cli
