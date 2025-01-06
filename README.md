@@ -13,11 +13,12 @@ The commit message and git diff are passed to the AI provider, which generates a
 
 ## 📋 Prerequisites
 
-1. Ensure your pipeline has a checkout step with `persistCredentials` enabled:
+1. Ensure your pipeline has a checkout step with `persistCredentials` enabled & `fetchDepth` set to `0`:
 
 ```yaml
 steps:
     - checkout: self
+      fetchDepth: "0" # IMPORTANT: otherwise, the diff will be ALL files in the repo
       persistCredentials: true
 ```
 
@@ -43,6 +44,7 @@ Add the task to your pipeline:
 ```yaml
 steps:
     - checkout: self
+      fetchDepth: "0"
       persistCredentials: true
     - script: |
           git config --global user.email "azure-pipelines@example.com"
