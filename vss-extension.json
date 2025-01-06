@@ -1,8 +1,8 @@
 {
     "manifestVersion": 1,
-    "id": "commitplusplus",
-    "name": "Commit++",
-    "version": "0.0.1",
+    "id": "commitscribe",
+    "name": "CommitScribe",
+    "version": "0.1.0",
     "publisher": "ScottMcKendry",
     "targets": [
         {
@@ -16,16 +16,16 @@
     },
     "files": [
         {
-            "path": "commitplusplus"
+            "path": "commitscribe"
         }
     ],
     "contributions": [
         {
-            "id": "commitplusplus",
+            "id": "commitscribe",
             "type": "ms.vss-distributed-task.task",
             "targets": ["ms.vss-distributed-task.tasks"],
             "properties": {
-                "name": "commitplusplus"
+                "name": "commitscribe"
             }
         }
     ]

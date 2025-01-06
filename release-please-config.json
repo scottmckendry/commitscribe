@@ -8,6 +8,11 @@
                     "type": "json",
                     "path": "vss-extension.json",
                     "jsonpath": "$.version"
+                },
+                {
+                    "type": "json",
+                    "path": "commitscribe/package.json",
+                    "jsonpath": "$.version"
                 }
             ]
         }

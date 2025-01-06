@@ -26,10 +26,10 @@ jobs:
               with:
                   node-version: "22"
             - name: Install dependencies
-              working-directory: ./commitplusplus
+              working-directory: ./commitscribe
               run: npm ci
-            - name: Build TypeScript (nested)
-              working-directory: ./commitplusplus
+            - name: Build TypeScript
+              working-directory: ./commitscribe
               run: npm run build
             - name: Install tfx-cli
               run: npm install -g tfx-cli
