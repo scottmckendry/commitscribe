@@ -31,6 +31,9 @@ jobs:
             - name: Build TypeScript
               working-directory: ./commitscribe
               run: npm run build
+            - name: Convert task.jsonc to task.json
+              working-directory: ./commitscribe
+              run: sed 's/\s*\/\/ x-release-please.*$//' task.jsonc > task.json
             - name: Install tfx-cli
               run: npm install -g tfx-cli
             - name: Publish to Marketplace
