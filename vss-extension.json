@@ -4,14 +4,13 @@
     "name": "CommitScribe",
     "version": "0.1.0",
     "publisher": "ScottMcKendry",
+    "description": "AI powered commit message rewriting",
+    "galleryFlags": ["Public"],
+    "categories": ["Azure Pipelines"],
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
-    ],
-    "description": "AI powered commit message rewriting",
-    "categories": [
-        "Azure Pipelines"
     ],
     "icons": {
         "default": "images/extension-icon.png"
@@ -21,13 +20,31 @@
             "path": "commitscribe"
         }
     ],
+    "branding": {
+        "color": "rgb(118, 160, 184)",
+        "theme": "dark"
+    },
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE"
+        }
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/scottmckendry/commitscribe"
+        },
+        "support": {
+            "uri": "https://github.com/scottmckendry/commitscribe/issues"
+        }
+    },
     "contributions": [
         {
             "id": "commitscribe",
             "type": "ms.vss-distributed-task.task",
-            "targets": [
-                "ms.vss-distributed-task.tasks"
-            ],
+            "targets": ["ms.vss-distributed-task.tasks"],
             "properties": {
                 "name": "commitscribe"
             }
