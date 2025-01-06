@@ -13,6 +13,10 @@
                     "type": "json",
                     "path": "commitscribe/package.json",
                     "jsonpath": "$.version"
+                },
+                {
+                    "type": "generic",
+                    "path": "commitscribe/task.jsonc"
                 }
             ]
         }
