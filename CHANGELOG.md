@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/scottmckendry/commitscribe/compare/v0.2.3...v0.2.4) (2025-01-06)
+
+
+### Bug Fixes
+
+* **ci:** convert comment-enabled json to supported format ([f7c5639](https://github.com/scottmckendry/commitscribe/commit/f7c56398af4ec6e314c787b5b098dc294af02ee6))
+
 ## [0.2.3](https://github.com/scottmckendry/commitscribe/compare/v0.2.2...v0.2.3) (2025-01-06)
 
 
