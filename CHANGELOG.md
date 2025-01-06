@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.2](https://github.com/scottmckendry/commitscribe/compare/v0.2.1...v0.2.2) (2025-01-06)
+
+
+### Bug Fixes
+
+* **ci:** combine package and publish steps ([d4b8adf](https://github.com/scottmckendry/commitscribe/commit/d4b8adf9470215a91b21ec39fc2a175881f56568))
+* **signoff:** update signoff message format ([5170e2c](https://github.com/scottmckendry/commitscribe/commit/5170e2c48ae23018ae1ceb9776d89668972c96bb))
+* **vss-extension:** improve marketplace display clarity ([84062ce](https://github.com/scottmckendry/commitscribe/commit/84062ced1c8053f1806bd5d63701abe6b8a37049))
+
 ## [0.2.1](https://github.com/scottmckendry/commitscribe/compare/v0.2.0...v0.2.1) (2025-01-06)
 
 
