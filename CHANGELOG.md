@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/scottmckendry/commitscribe/compare/v0.1.0...v0.2.0) (2025-01-06)
+
+
+### Features
+
+* **git:** add git push step ([2cf09c1](https://github.com/scottmckendry/commitscribe/commit/2cf09c1107b5f8844923fd4fd3c4ed1124deb710))
+
 ## [0.1.0](https://github.com/scottmckendry/commitscribe/compare/v0.0.1...v0.1.0) (2025-01-06)
 
 
