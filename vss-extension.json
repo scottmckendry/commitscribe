@@ -3,7 +3,7 @@
     "id": "commitplusplus",
     "name": "Commit++",
     "version": "0.0.1",
-    "publisher": "Scott McKendry",
+    "publisher": "ScottMcKendry",
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
