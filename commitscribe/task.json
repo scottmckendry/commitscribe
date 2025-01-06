@@ -78,7 +78,7 @@
             "label": "Recurse",
             "defaultValue": "false",
             "required": false,
-            "helpMarkDown": "Whether to recursively process commit messages. Will stop at the first instance of [commit++_signoff]"
+            "helpMarkDown": "Whether to recursively process commit messages. Will stop at the first instance of [commitscribe_signoff]"
         }
     ],
     "execution": {

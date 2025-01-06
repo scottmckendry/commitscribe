@@ -60,7 +60,7 @@ export class GitCommand {
             return "";
         }
 
-        if (message.includes("[commit++_signoff]")) {
+        if (message.includes("[commitscribe_signoff]")) {
             return "";
         }
 

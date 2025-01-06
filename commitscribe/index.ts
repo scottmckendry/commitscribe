@@ -11,7 +11,7 @@ empty separator line
 
 Ensure the title is maximum 50 characters and the message body is wrapped at 72 characters. Return ONLY the updated commit message - no other text. The diff may be truncated, keep this in mind.
 IMPORTANT: the last line of the description should always be the following:
-[commit++_signoff]`;
+[commitscribe_signoff]`;
 
 interface TaskInputs {
     aiProvider?: "anthropic" | "openai" | "azure";
