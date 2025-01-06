@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "commitplusplus",
     "name": "Commit++",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "ScottMcKendry",
     "targets": [
         {
@@ -10,7 +10,9 @@
         }
     ],
     "description": "AI powered commit message rewriting",
-    "categories": ["Azure Pipelines"],
+    "categories": [
+        "Azure Pipelines"
+    ],
     "icons": {
         "default": "images/extension-icon.png"
     },
@@ -23,7 +25,9 @@
         {
             "id": "commitplusplus",
             "type": "ms.vss-distributed-task.task",
-            "targets": ["ms.vss-distributed-task.tasks"],
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
             "properties": {
                 "name": "commitplusplus"
             }
