@@ -96,6 +96,8 @@ async function run() {
                 offset++;
             }
         }
+
+        git.forcePush();
     } catch (err: any) {
         tl.setResult(tl.TaskResult.Failed, err.message);
     }

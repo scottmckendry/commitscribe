@@ -114,4 +114,11 @@ export class GitCommand {
         // Cleanup
         this.execute(["branch", "-D", tempBranch], false);
     }
+
+    /**
+     * Pushes the current branch to the remote repository. A force push is always required when rewriting history.
+     */
+    public forcePush(): void {
+        this.execute(["push", "--force"], false);
+    }
 }

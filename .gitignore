@@ -1,4 +1,4 @@
-commitplusplus/node_modules
+commitscribe/node_modules
 **/**.js
-commitplusplus/.taskkey
-commitplusplus/.env
+commitscribe/.taskkey
+commitscribe/.env
