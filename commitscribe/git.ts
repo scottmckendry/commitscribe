@@ -119,6 +119,16 @@ export class GitCommand {
      * Pushes the current branch to the remote repository. A force push is always required when rewriting history.
      */
     public forcePush(): void {
-        this.execute(["push", "--force"], false);
+        const sourceBranch = tl.getVariable("Build.SourceBranch");
+        if (!sourceBranch) {
+            this.execute(["push", "--force"], false);
+            return;
+        }
+
+        const branchName = sourceBranch.replace("refs/heads/", "");
+        this.execute(
+            ["push", "--force", "origin", `HEAD:${branchName}`],
+            false,
+        );
     }
 }

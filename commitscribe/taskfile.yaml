@@ -6,6 +6,7 @@ env:
         This is an Azure DevOps Extension that re-writes commit messages using AI.
         It is written primarily in TypeScript and supports multiple AI APIs.
     INPUT_AIPROVIDER: "azure"
+    BUILD.SOURCEBRANCH: "refs/heads/main"
 
 dotenv: [".env"]
 
