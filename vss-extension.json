@@ -5,12 +5,8 @@
     "version": "0.2.1",
     "publisher": "ScottMcKendry",
     "description": "AI powered commit message rewriting",
-    "galleryFlags": [
-        "Public"
-    ],
-    "categories": [
-        "Azure Pipelines"
-    ],
+    "galleryFlags": ["Public"],
+    "categories": ["Azure Pipelines"],
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
@@ -25,8 +21,8 @@
         }
     ],
     "branding": {
-        "color": "rgb(118, 160, 184)",
-        "theme": "dark"
+        "color": "rgb(255,255,255)",
+        "theme": "light"
     },
     "content": {
         "details": {
@@ -48,9 +44,7 @@
         {
             "id": "commitscribe",
             "type": "ms.vss-distributed-task.task",
-            "targets": [
-                "ms.vss-distributed-task.tasks"
-            ],
+            "targets": ["ms.vss-distributed-task.tasks"],
             "properties": {
                 "name": "commitscribe"
             }
