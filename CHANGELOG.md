@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/scottmckendry/commitscribe/compare/v0.2.4...v0.2.5) (2025-01-06)
+
+
+### Bug Fixes
+
+* truncate prompt when using recurse option ([cad3bd1](https://github.com/scottmckendry/commitscribe/commit/cad3bd12f50af9659d87610287efa52ff1a4eeb1))
+
 ## [0.2.4](https://github.com/scottmckendry/commitscribe/compare/v0.2.3...v0.2.4) (2025-01-06)
 
 
