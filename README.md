@@ -21,7 +21,17 @@ steps:
       persistCredentials: true
 ```
 
-2. Grant repository permissions:
+2. Configure Git identity in your pipeline before the CommitScribe task:
+
+```yaml
+steps:
+    - script: |
+          git config --global user.email "azure-pipelines@example.com"
+          git config --global user.name "Azure Pipelines"
+      displayName: "Configure Git"
+```
+
+3. Grant repository permissions:
     - For Azure Repos: Grant the build service account 'Contribute' permissions
     - For GitHub repos: Configure GitHub service connection with write permissions
     - For other Git providers: Ensure the pipeline's service account has write access
@@ -34,6 +44,10 @@ Add the task to your pipeline:
 steps:
     - checkout: self
       persistCredentials: true
+    - script: |
+          git config --global user.email "azure-pipelines@example.com"
+          git config --global user.name "Azure Pipelines"
+      displayName: "Configure Git"
     - task: commitscribe@0
       inputs:
           aiprovider: "openai" # Options: openai, anthropic, azure
@@ -51,10 +65,10 @@ steps:
 | `systempromptoverride`   | No       | -                 | Override the default system prompt                                          |
 | `projectspecificcontext` | No       | -                 | Additional project context for better results                               |
 | `maxtokens`              | No       | 2000              | Maximum tokens for API requests                                             |
-| `recurse`                | No       | false             | Process commits recursively until [commit++_signoff]                        |
+| `recurse`                | No       | false             | Process commits recursively until [commitscribe_signoff]                    |
 
 > [!WARNING]
-> The `recurse` flag will parse your entire commit history and rewrite every commit message until it finds a commit message that contains `[commit++_signoff]`. This is useful for updating commit messages in bulk, but it can be dangerous if you're not careful. Use with caution!
+> The `recurse` flag will parse your entire commit history and rewrite every commit message until it finds a commit message that contains `[commitscribe_signoff]`. This is useful for updating commit messages in bulk, but it can be dangerous if you're not careful. Use with caution!
 
 ### 🪄 Examples
 
