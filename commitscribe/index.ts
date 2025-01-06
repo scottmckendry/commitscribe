@@ -81,10 +81,16 @@ async function run() {
         if (inputs.recurse) {
             let offset = 1;
             while (true) {
-                const historicCommit = git.getCommitMessage(offset);
+                var historicCommit = git.getCommitMessage(offset);
                 if (historicCommit === "") {
                     break;
                 }
+
+                // Truncate the prompt to a maximum number of tokens.
+                historicCommit = truncatePrompt(
+                    historicCommit,
+                    inputs.maxTokens,
+                );
 
                 const updatedHistoricMsg =
                     await aiProvider.generateCommitMessage(
