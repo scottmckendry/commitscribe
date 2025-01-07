@@ -31,7 +31,13 @@ export class GitCommand {
         }
 
         const branchName = sourceBranch.replace("refs/heads/", "");
-        this.execute(["checkout", branchName], false);
+        this.execute(["fetch", "origin"], false);
+        this.execute(["reset", "--hard"], false);
+        this.execute(
+            ["checkout", "-B", branchName, `origin/${branchName}`],
+            false,
+        );
+        this.execute(["reset", "--hard", `origin/${branchName}`], false);
     }
 
     /**
