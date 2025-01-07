@@ -18,7 +18,7 @@ The commit message and git diff are passed to the AI provider, which generates a
 ```yaml
 steps:
     - checkout: self
-      fetchDepth: "0" # IMPORTANT: otherwise, the diff will be ALL files in the repo
+      fetchDepth: "0"
       persistCredentials: true
 ```
 
@@ -33,9 +33,16 @@ steps:
 ```
 
 3. Grant repository permissions:
-    - For Azure Repos: Grant the build service account 'Contribute' permissions
+    - For Azure Repos: Grant the build service account 'Contribute' & 'Force Push' permissions.
     - For GitHub repos: Configure GitHub service connection with write permissions
     - For other Git providers: Ensure the pipeline's service account has write access
+
+> [!NOTE]
+>
+> **Why is force push required?**
+>
+> CommitScribe rewrites history. Use of the `--force` flag is necessary to persist updated commit messages in the target branch.
+> This is a destructive operation, so use with caution! For more information, see [Git's documentation on rewriting history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History).
 
 ## 🛠️ Basic Usage
 
