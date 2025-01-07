@@ -5,6 +5,7 @@ export class GitCommand {
 
     constructor() {
         this.gitPath = this.checkTool("git");
+        this.checkoutSourceBranch();
     }
 
     /**
@@ -21,6 +22,16 @@ export class GitCommand {
             throw new Error(error);
         }
         return toolPath;
+    }
+
+    private checkoutSourceBranch(): void {
+        const sourceBranch = tl.getVariable("Build.SourceBranch");
+        if (!sourceBranch) {
+            return;
+        }
+
+        const branchName = sourceBranch.replace("refs/heads/", "");
+        this.execute(["checkout", branchName], false);
     }
 
     /**
@@ -119,16 +130,6 @@ export class GitCommand {
      * Pushes the current branch to the remote repository. A force push is always required when rewriting history.
      */
     public forcePush(): void {
-        const sourceBranch = tl.getVariable("Build.SourceBranch");
-        if (!sourceBranch) {
-            this.execute(["push", "--force"], false);
-            return;
-        }
-
-        const branchName = sourceBranch.replace("refs/heads/", "");
-        this.execute(
-            ["push", "--force", "origin", `HEAD:${branchName}`],
-            false,
-        );
+        this.execute(["push", "--force"], false);
     }
 }
