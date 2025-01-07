@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/scottmckendry/commitscribe/compare/v0.2.5...v0.2.6) (2025-01-07)
+
+
+### Bug Fixes
+
+* **git:** always checkout source branch ([f8aa21f](https://github.com/scottmckendry/commitscribe/commit/f8aa21ff55d2308934e1aecbfe8b9945a469e2ea))
+
 ## [0.2.5](https://github.com/scottmckendry/commitscribe/compare/v0.2.4...v0.2.5) (2025-01-06)
 
 
