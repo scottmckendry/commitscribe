@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.7](https://github.com/scottmckendry/commitscribe/compare/v0.2.6...v0.2.7) (2025-01-07)
+
+
+### Bug Fixes
+
+* **pipelines:** improve checkout reliability ([4d30383](https://github.com/scottmckendry/commitscribe/commit/4d303830b7a2ba2777552392c94525bc23c35d1e))
+
 ## [0.2.6](https://github.com/scottmckendry/commitscribe/compare/v0.2.5...v0.2.6) (2025-01-07)
 
 
