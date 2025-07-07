@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/scottmckendry/commitscribe/compare/v0.2.7...v0.3.0) (2025-07-07)
+
+
+### Features
+
+* **git:** add support for empty commits ([7744f99](https://github.com/scottmckendry/commitscribe/commit/7744f9971e990ec9134599fd783f5b66d009cedb))
+
 ## [0.2.7](https://github.com/scottmckendry/commitscribe/compare/v0.2.6...v0.2.7) (2025-01-07)
 
 
