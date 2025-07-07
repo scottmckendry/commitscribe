@@ -103,7 +103,7 @@ export class GitCommand {
      */
     public rewordCommitMessage(newMessage: string, offset = 0): void {
         if (offset === 0) {
-            this.execute(["commit", "--amend", "-m", newMessage], false);
+            this.execute(["commit", "--amend", "--allow-empty", "-m", newMessage], false);
             return;
         }
 
@@ -120,7 +120,7 @@ export class GitCommand {
         this.execute(["checkout", sha, "-b", tempBranch], false);
 
         // Amend commit
-        this.execute(["commit", "--amend", "-m", newMessage], false);
+        this.execute(["commit", "--amend", "--allow-empty", "-m", newMessage], false);
 
         // Rebase current branch
         this.execute(
