@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/scottmckendry/commitscribe/compare/v0.4.0...v0.4.1) (2025-09-30)
+
+
+### Bug Fixes
+
+* split context input in two ([55a2a15](https://github.com/scottmckendry/commitscribe/commit/55a2a154d2adba7b00a531c08d11111e91bb55a2))
+
 ## [0.4.0](https://github.com/scottmckendry/commitscribe/compare/v0.3.0...v0.4.0) (2025-09-30)
 
 
