@@ -72,7 +72,9 @@ steps:
 | `model`                  | No       | Provider-specific | Model to use (`gpt-4` for OpenAI, `claude-3-sonnet-20240229` for Anthropic) |
 | `azendpoint`             | No\*     | -                 | Azure OpenAI endpoint URL (\*Required for Azure)                            |
 | `systempromptoverride`   | No       | -                 | Override the default system prompt                                          |
-| `projectspecificcontext` | No       | -                 | Additional project context (raw text or path to a file, e.g. `context.md`)  |
+| `projectspecificcontext` | No (Deprecated) | -          | Deprecated: legacy combined field. Prefer `projectcontexttext` / `projectcontextfile`. |
+| `projectcontexttext` | No | - | Inline additional project context text (multi-line). |
+| `projectcontextfile` | No | - | Path to a text/markdown file whose contents are appended as project context. |
 | `maxtokens`              | No       | 2000              | Maximum tokens for API requests                                             |
 | `recurse`                | No       | false             | Process commits recursively until [commitscribe_signoff]                    |
 

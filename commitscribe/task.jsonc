@@ -59,10 +59,25 @@
         {
             "name": "projectspecificcontext",
             "type": "multiLine",
-            "label": "Project Specific Context",
+            "label": "Project Specific Context (Deprecated)",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "Additional context about the project to help the AI generate better commit messages"
+            "helpMarkDown": "DEPRECATED: Use 'projectcontexttext' and/or 'projectcontextfile'. This field accepted inline text or a file path and is retained for backward compatibility."
+        },
+        {
+            "name": "projectcontexttext",
+            "type": "multiLine",
+            "label": "Project Context (Text)",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Inline project context to help the AI generate better commit messages"
+        },
+        {
+            "name": "projectcontextfile",
+            "type": "filePath",
+            "label": "Project Context File Path",
+            "required": false,
+            "helpMarkDown": "Path (relative or absolute) to a text/markdown file whose contents will be appended as additional project context"
         },
         {
             "name": "maxtokens",
