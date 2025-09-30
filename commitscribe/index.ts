@@ -1,3 +1,5 @@
+import * as fs from "fs";
+import * as path from "path";
 import tl = require("azure-pipelines-task-lib/task");
 import { AIProviderFactory as ai } from "./ai";
 import { GitCommand } from "./git";
@@ -55,7 +57,20 @@ async function run() {
         let currentSystemPrompt = inputs.systemPromptOverride || systemPrompt;
 
         if (inputs.projectSpecificContext) {
-            currentSystemPrompt += `\nAdditional context about this project:\n\n${inputs.projectSpecificContext}`;
+            let contextSource = inputs.projectSpecificContext;
+            const trimmed = contextSource.trim();
+            try {
+                const possiblePath = trimmed;
+                const resolved = path.isAbsolute(possiblePath)
+                    ? possiblePath
+                    : path.join(process.cwd(), possiblePath);
+                if (fs.existsSync(resolved) && fs.statSync(resolved).isFile()) {
+                    contextSource = fs.readFileSync(resolved, "utf8");
+                }
+            } catch (e: any) {
+                tl.debug(`Project-specific context treated as literal text (file load attempt failed: ${e.message})`);
+            }
+            currentSystemPrompt += `\nAdditional context about this project:\n\n${contextSource}`;
         }
 
         const commitMsg = git.getCommitMessage();
