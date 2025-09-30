@@ -72,7 +72,7 @@ steps:
 | `model`                  | No       | Provider-specific | Model to use (`gpt-4` for OpenAI, `claude-3-sonnet-20240229` for Anthropic) |
 | `azendpoint`             | No\*     | -                 | Azure OpenAI endpoint URL (\*Required for Azure)                            |
 | `systempromptoverride`   | No       | -                 | Override the default system prompt                                          |
-| `projectspecificcontext` | No       | -                 | Additional project context for better results                               |
+| `projectspecificcontext` | No       | -                 | Additional project context (raw text or path to a file, e.g. `context.md`)  |
 | `maxtokens`              | No       | 2000              | Maximum tokens for API requests                                             |
 | `recurse`                | No       | false             | Process commits recursively until [commitscribe_signoff]                    |
 
@@ -115,7 +115,10 @@ steps:
 ## ✅ Best Practices
 
 1. Always store API keys as secret variables
-2. Use `projectspecificcontext` to provide domain-specific knowledge
+2. Use `projectspecificcontext` to provide domain-specific knowledge. This value may be:
+   - Inline text (short descriptions, architectural notes)
+   - A relative or absolute path to a text/markdown file (e.g. `context.md`, `docs/domain/overview.txt`)
+   If a readable file exists at the provided path, its contents are inlined automatically. Otherwise, the value is treated as raw text.
 3. Set appropriate `maxtokens` for your commit message size
 
 ## 🤝 Contributing
